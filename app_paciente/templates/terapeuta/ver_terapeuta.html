@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Lista de Terapeutas</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Especialidad</th>
+      <th>Teléfono</th>
+      <th>Correo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in terapeutas %}
+    <tr>
+      <td>{{ t.id }}</td>
+      <td>{{ t.nom_tep }}</td>
+      <td>{{ t.ape_tep }}</td>
+      <td>{{ t.especialidad_tep }}</td>
+      <td>{{ t.tel_tep }}</td>
+      <td>{{ t.correo_tep }}</td>
+      <td>
+        <a href="/actualizar_terapeuta/{{ t.id }}/" class="btn btn-warning btn-sm">Editar</a>
+        <a href="/borrar_terapeuta/{{ t.id }}/" class="btn btn-danger btn-sm">Borrar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Lista de Pacientes</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th><th>Nombre</th><th>Edad</th><th>Género</th><th>Teléfono</th><th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in pacientes %}
+    <tr>
+      <td>{{ p.id }}</td>
+      <td>{{ p.nom_pac }} {{ p.ape_pac }}</td>
+      <td>{{ p.edad_pac }}</td>
+      <td>{{ p.genero_pac }}</td>
+      <td>{{ p.tel_pac }}</td>
+      <td>
+        <a href="/actualizar_paciente/{{ p.id }}/" class="btn btn-warning btn-sm">Editar</a>
+        <a href="/borrar_paciente/{{ p.id }}/" class="btn btn-danger btn-sm">Borrar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

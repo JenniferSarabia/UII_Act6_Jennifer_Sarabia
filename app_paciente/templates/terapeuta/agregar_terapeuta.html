@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Agregar Terapeuta</h2>
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="nom_tep" placeholder="Nombre" class="form-control mb-2">
+  <input type="text" name="ape_tep" placeholder="Apellido" class="form-control mb-2">
+
+  <select name="especialidad_tep" class="form-control mb-2">
+    <option value="Física">Física</option>
+    <option value="Psicológica">Psicológica</option>
+    <option value="Ocupacional">Ocupacional</option>
+    <option value="Lenguaje">Lenguaje</option>
+    <option value="Otra">Otra</option>
+  </select>
+
+  <input type="text" name="tel_tep" placeholder="Teléfono" class="form-control mb-2">
+  <input type="email" name="correo_tep" placeholder="Correo" class="form-control mb-2">
+  <input type="text" name="horario_tep" placeholder="Horario (ej. Lunes a Viernes)" class="form-control mb-2">
+  <input type="number" name="experiencia_tep" placeholder="Años de experiencia" class="form-control mb-2">
+
+  <button type="submit" class="btn btn-success">Guardar</button>
+</form>
+{% endblock %}

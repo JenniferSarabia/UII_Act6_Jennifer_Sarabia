@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">➕ Agregar Pago</h2>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label class="form-label">Fecha de Pago</label>
+      <input type="date" name="fecha_pago" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Monto ($)</label>
+      <input type="number" step="0.01" name="monto" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Método de Pago</label>
+      <select name="metodo_pago" class="form-select">
+        <option value="efectivo">Efectivo</option>
+        <option value="tarjeta">Tarjeta</option>
+        <option value="transferencia">Transferencia</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Estado</label>
+      <select name="estado" class="form-select">
+        <option value="pendiente">Pendiente</option>
+        <option value="pagado">Pagado</option>
+        <option value="cancelado">Cancelado</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Cita Asociada</label>
+      <select name="cita" class="form-select">
+        {% for c in citas %}
+        <option value="{{ c.id }}">{{ c.paciente.nom_pac }} - {{ c.fecha }} {{ c.hora }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Pago</button>
+  </form>
+</div>
+{% endblock %}

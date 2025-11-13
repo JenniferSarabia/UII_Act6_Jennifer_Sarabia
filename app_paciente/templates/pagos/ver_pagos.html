@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">💰 Lista de Pagos</h2>
+  <a href="{% url 'agregar_pago' %}" class="btn btn-success mb-3">➕ Nuevo Pago</a>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Paciente</th>
+        <th>Fecha de Pago</th>
+        <th>Monto</th>
+        <th>Método</th>
+        <th>Estado</th>
+        <th>Cita</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in pagos %}
+      <tr>
+        <td>{{ p.cita.paciente.nom_pac }} {{ p.cita.paciente.ape_pac }}</td>
+        <td>{{ p.fecha_pago }}</td>
+        <td>${{ p.monto }}</td>
+        <td>{{ p.metodo_pago|title }}</td>
+        <td>{{ p.estado|title }}</td>
+        <td>{{ p.cita.fecha }} - {{ p.cita.hora }}</td>
+        <td>
+          <a href="{% url 'actualizar_pago' p.id %}" class="btn btn-warning btn-sm">✏️ Editar</a>
+          <a href="{% url 'borrar_pago' p.id %}" class="btn btn-danger btn-sm">🗑️ Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

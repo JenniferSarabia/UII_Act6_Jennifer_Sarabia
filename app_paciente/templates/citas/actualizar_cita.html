@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4 text-warning">✏️ Actualizar Cita</h2>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" id="fecha" name="fecha" class="form-control" value="{{ cita.fecha|date:'Y-m-d' }}" required>
+      </div>
+      <div class="col-md-6">
+        <label for="hora" class="form-label">Hora</label>
+        <input type="time" id="hora" name="hora" class="form-control" value="{{ cita.hora|time:'H:i' }}" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="motivo" class="form-label">Motivo</label>
+      <input type="text" id="motivo" name="motivo" class="form-control" value="{{ cita.motivo }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="estado" class="form-label">Estado</label>
+      <select id="estado" name="estado" class="form-select">
+        <option value="pendiente" {% if cita.estado == 'pendiente' %}selected{% endif %}>Pendiente</option>
+        <option value="confirmada" {% if cita.estado == 'confirmada' %}selected{% endif %}>Confirmada</option>
+        <option value="cancelada" {% if cita.estado == 'cancelada' %}selected{% endif %}>Cancelada</option>
+        <option value="finalizada" {% if cita.estado == 'finalizada' %}selected{% endif %}>Finalizada</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="paciente" class="form-label">Paciente</label>
+      <select id="paciente" name="paciente" class="form-select">
+        {% for p in pacientes %}
+          <option value="{{ p.id }}" {% if p.id == cita.paciente.id %}selected{% endif %}>
+            {{ p.nom_pac }} {{ p.ape_pac }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="terapeuta" class="form-label">Terapeuta</label>
+      <select id="terapeuta" name="terapeuta" class="form-select">
+        {% for t in terapeutas %}
+          <option value="{{ t.id }}" {% if t.id == cita.terapeuta.id %}selected{% endif %}>
+            {{ t.nom_tep }} {{ t.ape_tep }} - {{ t.especialidad_tep }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-warning">Actualizar Cita</button>
+    <a href="{% url 'ver_citas' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

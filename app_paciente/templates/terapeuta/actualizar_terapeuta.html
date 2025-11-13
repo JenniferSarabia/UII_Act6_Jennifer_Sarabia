@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Actualizar Terapeuta</h2>
+<form method="POST" action="/realizar_actualizacion_terapeuta/{{ terapeuta.id }}/">
+  {% csrf_token %}
+  <input type="text" name="nom_tep" value="{{ terapeuta.nom_tep }}" class="form-control mb-2" placeholder="Nombre">
+  <input type="text" name="ape_tep" value="{{ terapeuta.ape_tep }}" class="form-control mb-2" placeholder="Apellido">
+
+  <select name="especialidad_tep" class="form-control mb-2">
+    <option value="{{ terapeuta.especialidad_tep }}" selected>{{ terapeuta.especialidad_tep }}</option>
+    <option value="Física">Física</option>
+    <option value="Psicológica">Psicológica</option>
+    <option value="Ocupacional">Ocupacional</option>
+    <option value="Lenguaje">Lenguaje</option>
+    <option value="Otra">Otra</option>
+  </select>
+
+  <input type="text" name="tel_tep" value="{{ terapeuta.tel_tep }}" class="form-control mb-2" placeholder="Teléfono">
+  <input type="email" name="correo_tep" value="{{ terapeuta.correo_tep }}" class="form-control mb-2" placeholder="Correo electrónico">
+  <input type="text" name="horario_tep" value="{{ terapeuta.horario_tep }}" class="form-control mb-2" placeholder="Horario">
+  <input type="number" name="experiencia_tep" value="{{ terapeuta.experiencia_tep }}" class="form-control mb-2" placeholder="Años de experiencia">
+
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+{% endblock %}

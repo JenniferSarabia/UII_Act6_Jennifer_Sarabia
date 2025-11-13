@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">➕ Agregar Cita</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" id="fecha" name="fecha" class="form-control" required>
+      </div>
+      <div class="col-md-6">
+        <label for="hora" class="form-label">Hora</label>
+        <input type="time" id="hora" name="hora" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="motivo" class="form-label">Motivo</label>
+      <input type="text" id="motivo" name="motivo" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="estado" class="form-label">Estado</label>
+      <select id="estado" name="estado" class="form-select">
+        <option value="pendiente">Pendiente</option>
+        <option value="confirmada">Confirmada</option>
+        <option value="cancelada">Cancelada</option>
+        <option value="finalizada">Finalizada</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="paciente" class="form-label">Paciente</label>
+      <select id="paciente" name="paciente" class="form-select">
+        {% for p in pacientes %}
+          <option value="{{ p.id }}">{{ p.nom_pac }} {{ p.ape_pac }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="terapeuta" class="form-label">Terapeuta</label>
+      <select id="terapeuta" name="terapeuta" class="form-select">
+        {% for t in terapeutas %}
+          <option value="{{ t.id }}">{{ t.nom_tep }} {{ t.ape_tep }} - {{ t.especialidad_tep }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Cita</button>
+  </form>
+</div>
+{% endblock %}

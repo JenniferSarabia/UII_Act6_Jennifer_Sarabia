@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Actualizar Paciente</h2>
+<form method="POST" action="/realizar_actualizacion_paciente/{{ paciente.id }}/">
+  {% csrf_token %}
+  <input type="text" name="nom_pac" value="{{ paciente.nom_pac }}" class="form-control mb-2">
+  <input type="text" name="ape_pac" value="{{ paciente.ape_pac }}" class="form-control mb-2">
+  <input type="number" name="edad_pac" value="{{ paciente.edad_pac }}" class="form-control mb-2">
+  <input type="text" name="genero_pac" value="{{ paciente.genero_pac }}" class="form-control mb-2">
+  <input type="text" name="tel_pac" value="{{ paciente.tel_pac }}" class="form-control mb-2">
+  <input type="email" name="correo_pac" value="{{ paciente.correo_pac }}" class="form-control mb-2">
+  <input type="text" name="direccion_pac" value="{{ paciente.direccion_pac }}" class="form-control mb-2">
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+{% endblock %}

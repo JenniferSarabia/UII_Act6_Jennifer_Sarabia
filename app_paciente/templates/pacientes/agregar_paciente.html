@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Agregar Paciente</h2>
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="nom_pac" placeholder="Nombre" class="form-control mb-2">
+  <input type="text" name="ape_pac" placeholder="Apellido" class="form-control mb-2">
+  <input type="number" name="edad_pac" placeholder="Edad" class="form-control mb-2">
+  <input type="text" name="genero_pac" placeholder="Género" class="form-control mb-2">
+  <input type="text" name="tel_pac" placeholder="Teléfono" class="form-control mb-2">
+  <input type="email" name="correo_pac" placeholder="Correo" class="form-control mb-2">
+  <input type="text" name="direccion_pac" placeholder="Dirección" class="form-control mb-2">
+  <button type="submit" class="btn btn-success">Guardar</button>
+</form>
+{% endblock %}

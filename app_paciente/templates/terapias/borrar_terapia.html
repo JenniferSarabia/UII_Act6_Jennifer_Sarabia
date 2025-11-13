@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4 text-danger text-center">🗑️ Eliminar Cita</h2>
+
+<p class="text-center">
+  ¿Seguro que deseas eliminar la cita del paciente 
+  <strong>{{ cita.paciente.nom_pac }} {{ cita.paciente.ape_pac }}</strong> 
+  con el terapeuta 
+  <strong>{{ cita.terapeuta.nom_tep }} {{ cita.terapeuta.ape_tep }}</strong> 
+  programada para el <strong>{{ cita.fecha }}</strong>?
+</p>
+
+<form method="post" class="text-center mt-4">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger px-4">Sí, eliminar</button>
+    <a href="{% url 'ver_citas' %}" class="btn btn-secondary ms-3 px-4">Cancelar</a>
+</form>
+{% endblock %}

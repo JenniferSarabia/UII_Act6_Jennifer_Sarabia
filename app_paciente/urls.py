@@ -1,0 +1,31 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.inicio_live_side, name='inicio_live_side'),
+    path('agregar_paciente/', views.agregar_paciente, name='agregar_paciente'),
+    path('ver_pacientes/', views.ver_pacientes, name='ver_pacientes'),
+    path('actualizar_paciente/<int:id>/', views.actualizar_paciente, name='actualizar_paciente'),
+    path('realizar_actualizacion_paciente/<int:id>/', views.realizar_actualizacion_paciente, name='realizar_actualizacion_paciente'),
+    path('borrar_paciente/<int:id>/', views.borrar_paciente, name='borrar_paciente'),
+    path('agregar_terapeuta/', views.agregar_terapeuta, name='agregar_terapeuta'),
+    path('ver_terapeuta/', views.ver_terapeuta, name='ver_terapeuta'),
+    path('actualizar_terapeuta/<int:id>/', views.actualizar_terapeuta, name='actualizar_terapeuta'),
+    path('realizar_actualizacion_terapeuta/<int:id>/', views.realizar_actualizacion_terapeuta, name='realizar_actualizacion_terapeuta'),
+    path('borrar_terapeuta/<int:id>/', views.borrar_terapeuta, name='borrar_terapeuta'),
+    path('ver_terapias/', views.ver_terapias, name='ver_terapias'),
+    path('agregar_terapia/', views.agregar_terapia, name='agregar_terapia'),
+    path('actualizar_terapia/<int:id>/', views.actualizar_terapia, name='actualizar_terapia'),
+    path('realizar_actualizacion_terapia/<int:id>/', views.realizar_actualizacion_terapia, name='realizar_actualizacion_terapia'),
+    path('borrar_terapia/<int:id>/', views.borrar_terapia, name='borrar_terapia'),
+    path('ver_citas/', views.ver_citas, name='ver_citas'),
+    path('agregar_cita/', views.agregar_cita, name='agregar_cita'),
+    path('actualizar_cita/<int:id>/', views.actualizar_cita, name='actualizar_cita'),
+    path('realizar_actualizacion_cita/<int:id>/', views.realizar_actualizacion_cita, name='realizar_actualizacion_cita'),
+    path('borrar_cita/<int:id>/', views.borrar_cita, name='borrar_cita'),
+    path('ver_pagos/', views.ver_pagos, name='ver_pagos'),
+    path('agregar_pago/', views.agregar_pago, name='agregar_pago'),
+    path('actualizar_pago/<int:id>/', views.actualizar_pago, name='actualizar_pago'),
+    path('realizar_actualizacion_pago/<int:id>/', views.realizar_actualizacion_pago, name='realizar_actualizacion_pago'),
+    path('borrar_pago/<int:id>/', views.borrar_pago, name='borrar_pago'),
+]

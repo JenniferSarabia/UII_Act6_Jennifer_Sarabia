@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Confirmar borrado</h2>
+<p>¿Deseas eliminar al terapeuta <strong>{{ terapeuta.nom_tep }} {{ terapeuta.ape_tep }}</strong>?</p>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Sí, borrar</button>
+  <a href="/ver_terapeuta/" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

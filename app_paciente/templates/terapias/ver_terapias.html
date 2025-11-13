@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">Lista de Terapias</h2>
+  <a href="{% url 'agregar_terapia' %}" class="btn btn-success mb-3">➕ Nueva Terapia</a>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Paciente</th>
+        <th>Terapeutas</th>
+        <th>Duración</th>
+        <th>Frecuencia</th>
+        <th>Nivel</th>
+        <th>Costo</th>
+        <th>Inicio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in terapias %}
+      <tr>
+        <td>{{ t.nom_ter }}</td>
+        <td>{{ t.paciente.nom_pac }}</td>
+        <td>
+          {% for te in t.terapeutas.all %}
+            {{ te.nom_tep }} {{ te.ape_tep }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </td>
+        <td>{{ t.duracion_ter }} min</td>
+        <td>{{ t.frecuencia_ter }}</td>
+        <td>{{ t.nivel_ter }}</td>
+        <td>${{ t.costo_ter }}</td>
+        <td>{{ t.fecha_inicio }}</td>
+        <td>
+          <a href="{% url 'actualizar_terapia' t.id %}" class="btn btn-warning btn-sm">✏️ Editar</a>
+          <a href="{% url 'borrar_terapia' t.id %}" class="btn btn-danger btn-sm">🗑️ Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
